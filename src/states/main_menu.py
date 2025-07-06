@@ -3,7 +3,7 @@
 import pygame as pg
 from .base_state import BaseState
 from ..ui.button import Button
-from ..ui.button import ButtonGroup
+from ..ui.button_group import ButtonGroup
 
 class MainMenu(BaseState):
     def __init__(self):

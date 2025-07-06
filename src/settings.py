@@ -1,3 +1,5 @@
+# src/settings.py
+
 import json
 import os
 
@@ -5,8 +7,8 @@ class Settings:
     def __init__(self, config_dir=None):
         base_dir = os.path.dirname(__file__)
         self.config_dir = config_dir or os.path.join(base_dir, "..", "config")
-
-        self.video = self._load("video.json")
+        self.settings = {}
+        self.settings["video"] = self._load("video.json")
 
     def _load(self, filename):
         path = os.path.join(self.config_dir, filename)
@@ -28,10 +30,3 @@ class Settings:
             except json.JSONDecodeError as e:
                 print(f"ERROR::settings.py::Warning: Skipping invalid JSON in {filename}: {e}")
                 return {}
-
-    def get_resolution(self):
-        return tuple(self.video.get("resolution", [800, 600]))
-
-
-    def is_fullscreen(self):
-        return self.video.get("fullscreen", False)

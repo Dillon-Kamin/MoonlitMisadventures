@@ -1,15 +1,16 @@
 # src/states/main_menu.py
 
 import pygame as pg
-from ..engine_types import CLEAR
 from .base_state import BaseState
 from ..ui.button import Button
 from ..ui.button_group import ButtonGroup
 
 class MainMenu(BaseState):
-    def __init__(self):
+    def __init__(self, resources):
         super().__init__()
-        self.font = pg.font.SysFont("arial", 40)
+        self.RESOURCES = resources
+        self.menu_font = self.RESOURCES["FONTS"]["main_font"]
+        self.bg_image = pg.image.load("assets/images/backgrounds/mainmenu_background.png").convert()
         
         self.btn_container = ButtonGroup(
             pos=(300, 200),
@@ -19,23 +20,23 @@ class MainMenu(BaseState):
         )
         self.btn_container.add_button(
             text="Start",
-            color_fill=pg.Color(CLEAR),
+            color_fill=pg.Color(self.RESOURCES["COLORS"]["clear"]),
             text_color=pg.Color("white"),
-            font=self.font,
+            font=self.menu_font,
             action=self.start_game,
         )
         self.btn_container.add_button(
             text="Settings",
-            color_fill=pg.Color(CLEAR),
+            color_fill=pg.Color(self.RESOURCES["COLORS"]["clear"]),
             text_color=pg.Color("white"),
-            font=self.font,
+            font=self.menu_font,
             action=self.open_settings,
         )
         self.btn_container.add_button(
             text="Exit",
-            color_fill=pg.Color(CLEAR),
+            color_fill=pg.Color(self.RESOURCES["COLORS"]["clear"]),
             text_color=pg.Color("white"),
-            font=self.font,
+            font=self.menu_font,
             action=self.exit_game,
         )
 
@@ -55,5 +56,5 @@ class MainMenu(BaseState):
         self.btn_container.update(dt)
 
     def render(self, screen):
-        screen.fill("black")
+        screen.blit(self.bg_image, (0, 0))
         self.btn_container.render(screen)

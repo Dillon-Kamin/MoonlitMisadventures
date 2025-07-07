@@ -15,8 +15,8 @@ class MainMenu(BaseState):
         
         self.bg_image = pg.transform.scale(pg.image.load("assets/images/backgrounds/mainmenu_background.png"), screen.get_size()).convert()
         
-        button_width = screen_width // 4
-        button_height = screen_height // 12
+        button_width = screen_width // 4.5
+        button_height = screen_height // 15
         button_size = (button_width, button_height)
         padding = 20
         pos_y = 0
@@ -31,11 +31,18 @@ class MainMenu(BaseState):
             padding=padding
         )
         self.btn_container.add_button(
-            text="Start",
+            text="New Game",
             color_fill=pg.Color(self.RESOURCES["COLORS"]["somewhat_clear"]),
             text_color=pg.Color("white"),
             font=self.menu_font,
-            action=self.start_game,
+            action=self.new_game,
+        )
+        self.btn_container.add_button(
+            text="Load Game",
+            color_fill=pg.Color(self.RESOURCES["COLORS"]["somewhat_clear"]),
+            text_color=pg.Color("white"),
+            font=self.menu_font,
+            action=self.load_game,
         )
         self.btn_container.add_button(
             text="Settings",
@@ -52,8 +59,11 @@ class MainMenu(BaseState):
             action=self.exit_game,
         )
 
-    def start_game(self):
-        print("Starting game...")
+    def new_game(self):
+        print("Starting new game...")
+
+    def load_game(self):
+        print("Loading game from save...")
 
     def open_settings(self):
         print("Opening settings...")

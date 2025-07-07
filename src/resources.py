@@ -7,7 +7,6 @@ class Resources:
         self.resources = {}
         self.init_colors()
         self.init_fonts()
-        print(self.resources)
     
     def init_colors(self):
         self.resources["COLORS"] = {"clear": pg.Color(0, 0, 0, 0)}

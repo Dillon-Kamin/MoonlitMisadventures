@@ -5,13 +5,13 @@ import pygame as pg
 from src.states.main_menu import MainMenu
 
 class Game:
-    def __init__(self, SETTINGS):
+    def __init__(self, SETTINGS, RESOURCES):
         self.screen = pg.display.set_mode(
             (SETTINGS["video"]["resolution"]["width"], SETTINGS["video"]["resolution"]["height"]),
             pg.FULLSCREEN if SETTINGS["video"]["fullscreen"] else 0 
         )
         self.clock = pg.time.Clock()
-        self.state_stack = [MainMenu()]
+        self.state_stack = [MainMenu(RESOURCES)]
         self.gameRunning = True
     
     def run(self):

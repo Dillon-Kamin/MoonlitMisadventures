@@ -4,14 +4,16 @@ import pygame
 import sys
 
 from src.settings import Settings
+from src.resources import Resources
 from src.game import Game
 
 def main():
-    # Load config
-    SETTINGS = Settings().settings
-
     pygame.init()
     pygame.display.set_caption("Moonlit Misadventures")
 
-    game = Game(SETTINGS)
+    # Load config and resources
+    SETTINGS = Settings().settings
+    RESOURCES = Resources().resources
+
+    game = Game(SETTINGS, RESOURCES)
     game.run()

@@ -1,6 +1,7 @@
 # src/states/main_menu.py
 
 import pygame as pg
+from ..engine_types import CLEAR
 from .base_state import BaseState
 from ..ui.button import Button
 from ..ui.button_group import ButtonGroup
@@ -18,21 +19,21 @@ class MainMenu(BaseState):
         )
         self.btn_container.add_button(
             text="Start",
-            color_fill=pg.Color("darkgreen"),
+            color_fill=pg.Color(CLEAR),
             text_color=pg.Color("white"),
             font=self.font,
             action=self.start_game,
         )
         self.btn_container.add_button(
             text="Settings",
-            color_fill=pg.Color("darkblue"),
+            color_fill=pg.Color(CLEAR),
             text_color=pg.Color("white"),
             font=self.font,
             action=self.open_settings,
         )
         self.btn_container.add_button(
             text="Exit",
-            color_fill=pg.Color("darkred"),
+            color_fill=pg.Color(CLEAR),
             text_color=pg.Color("white"),
             font=self.font,
             action=self.exit_game,

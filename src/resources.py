@@ -10,6 +10,7 @@ class Resources:
     
     def init_colors(self):
         self.resources["COLORS"] = {"clear": pg.Color(0, 0, 0, 0)}
+        self.resources["COLORS"]["somewhat_clear"] = pg.Color(0, 0, 0, 50)
 
     def init_fonts(self):
-        self.resources["FONTS"] = {"main_font": pg.font.Font("assets/fonts/_bitmap_font____romulus_by_pix3m_d6aokem.ttf", 7)}
+        self.resources["FONTS"] = {"main_font_path": "assets/fonts/_bitmap_font____romulus_by_pix3m_d6aokem.ttf"}

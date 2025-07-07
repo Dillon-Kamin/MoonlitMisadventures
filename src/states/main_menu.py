@@ -2,39 +2,51 @@
 
 import pygame as pg
 from .base_state import BaseState
-from ..ui.button import Button
 from ..ui.button_group import ButtonGroup
 
 class MainMenu(BaseState):
-    def __init__(self, resources):
+    def __init__(self, resources, screen):
         super().__init__()
         self.RESOURCES = resources
-        self.menu_font = self.RESOURCES["FONTS"]["main_font"]
-        self.bg_image = pg.image.load("assets/images/backgrounds/mainmenu_background.png").convert()
+        screen_width, screen_height = screen.get_size()
+
+        font_size = int(screen_height * 0.05)
+        self.menu_font = pg.font.Font(self.RESOURCES["FONTS"]["main_font_path"], font_size)
         
+        self.bg_image = pg.transform.scale(pg.image.load("assets/images/backgrounds/mainmenu_background.png"), screen.get_size()).convert()
+        
+        button_width = screen_width // 4
+        button_height = screen_height // 12
+        button_size = (button_width, button_height)
+        padding = 20
+        pos_y = 0
+        pos_x = screen_width - button_width - 2*padding
+
+        spacing = int(screen_height * 0.02)
         self.btn_container = ButtonGroup(
-            pos=(300, 200),
-            button_size=(200, 60),
-            spacing=15,
+            pos=(pos_x, pos_y),
+            button_size=button_size,
+            spacing=spacing,
             orientation="vertical",
+            padding=padding
         )
         self.btn_container.add_button(
             text="Start",
-            color_fill=pg.Color(self.RESOURCES["COLORS"]["clear"]),
+            color_fill=pg.Color(self.RESOURCES["COLORS"]["somewhat_clear"]),
             text_color=pg.Color("white"),
             font=self.menu_font,
             action=self.start_game,
         )
         self.btn_container.add_button(
             text="Settings",
-            color_fill=pg.Color(self.RESOURCES["COLORS"]["clear"]),
+            color_fill=pg.Color(self.RESOURCES["COLORS"]["somewhat_clear"]),
             text_color=pg.Color("white"),
             font=self.menu_font,
             action=self.open_settings,
         )
         self.btn_container.add_button(
             text="Exit",
-            color_fill=pg.Color(self.RESOURCES["COLORS"]["clear"]),
+            color_fill=pg.Color(self.RESOURCES["COLORS"]["somewhat_clear"]),
             text_color=pg.Color("white"),
             font=self.menu_font,
             action=self.exit_game,

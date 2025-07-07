@@ -11,7 +11,7 @@ class Game:
             pg.FULLSCREEN if SETTINGS["video"]["fullscreen"] else 0 
         )
         self.clock = pg.time.Clock()
-        self.state_stack = [MainMenu(RESOURCES)]
+        self.state_stack = [MainMenu(RESOURCES, screen=self.screen)]
         self.gameRunning = True
     
     def run(self):

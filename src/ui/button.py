@@ -21,11 +21,16 @@ class Button(UIElement):
 
     def render(self, surface):
         if self.visible:
-            pg.draw.rect(surface, self.color_fill, self.rect)
+            button_surf = pg.Surface(self.rect.size, pg.SRCALPHA)
+            button_surf.fill(self.color_fill)
+
+            #pg.draw.rect(surface, self.color_fill, self.rect)
             if self.text and self.font:
                 text_surf = self.font.render(self.text, True, self.text_color)
-                text_rect = text_surf.get_rect(center=self.rect.center)
-                surface.blit(text_surf, text_rect)
+                text_rect = text_surf.get_rect(center=(self.rect.width // 2, self.rect.height // 2))
+                button_surf.blit(text_surf, text_rect)
+            
+            surface.blit(button_surf, self.rect.topleft)
 
     def handle_event(self, event):
         if event.type == pg.MOUSEMOTION:

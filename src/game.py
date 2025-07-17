@@ -2,6 +2,7 @@
 
 import pygame as pg
 
+from src.game_context import GameContext
 from src.states.main_menu import MainMenu
 
 class Game:
@@ -10,9 +11,15 @@ class Game:
             (SETTINGS["video"]["resolution"]["width"], SETTINGS["video"]["resolution"]["height"]),
             pg.FULLSCREEN if SETTINGS["video"]["fullscreen"] else 0 
         )
+        self.context = GameContext(screen=self.screen, resources=RESOURCES, set_screen=self.set_screen)
+
         self.clock = pg.time.Clock()
-        self.state_stack = [MainMenu(RESOURCES, screen=self.screen)]
+        self.state_stack = [MainMenu(self.context)]
         self.gameRunning = True
+
+    def set_screen(self, new_size):
+        self.screen = pg.display.set_mode(new_size, pg.RESIZABLE)
+        self.context.screen = self.screen
     
     def run(self):
         while self.gameRunning:

@@ -6,15 +6,15 @@ from ..ui.button_group import ButtonGroup
 #from src.states.settings_menu import SettingsMenu
 
 class MainMenu(BaseState):
-    def __init__(self, resources, screen):
-        super().__init__()
-        self.RESOURCES = resources
-        screen_width, screen_height = screen.get_size()
+    def __init__(self, context):
+        super().__init__(context)
+        self.RESOURCES = context.resources
+        screen_width, screen_height = context.screen.get_size()
 
         font_size = int(screen_height * 0.05)
         self.menu_font = pg.font.Font(self.RESOURCES["FONTS"]["main_font_path"], font_size)
         
-        self.bg_image = pg.transform.scale(pg.image.load("assets/images/backgrounds/mainmenu_background.png"), screen.get_size()).convert()
+        self.bg_image = pg.transform.scale(pg.image.load("assets/images/backgrounds/mainmenu_background.png"), context.screen.get_size()).convert()
         
         button_width = screen_width // 4.5
         button_height = screen_height // 15
@@ -88,6 +88,6 @@ class MainMenu(BaseState):
     def open_settings(self):
         self.persist_on_quit = True
         self.quit = True
-        #self.next_state = SettingsMenu(resources=self.RESOURCES, screen=self.screen)
+        #self.next_state = SettingsMenu(self.context)
 
     

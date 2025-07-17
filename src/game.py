@@ -29,9 +29,10 @@ class Game:
             pg.display.flip()
 
             if current_state.quit:
+                next_state = current_state.next_state
                 self.state_stack.pop()
                 if not self.state_stack:
                     self.gameRunning = False
                 elif current_state.next_state:
-                    self.state_stack.append(current_state.next_state)
+                    self.state_stack.append(next_state)
                 

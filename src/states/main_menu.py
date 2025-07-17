@@ -59,18 +59,6 @@ class MainMenu(BaseState):
             action=self.exit_game,
         )
 
-    def new_game(self):
-        print("Starting new game...")
-
-    def load_game(self):
-        print("Loading game from save...")
-
-    def open_settings(self):
-        print("Opening settings...")
-
-    def exit_game(self):
-        self.quit = True
-
     def handle_event(self, event):
         self.btn_container.handle_event(event)
 
@@ -80,3 +68,17 @@ class MainMenu(BaseState):
     def render(self, screen):
         screen.blit(self.bg_image, (0, 0))
         self.btn_container.render(screen)
+
+    def exit_game(self):
+            self.quit = True
+            
+    def new_game(self):
+        print("Starting new game...")
+
+    def load_game(self):
+        print("Loading game from save...")
+
+    def open_settings(self):
+        print("Opening settings...")
+
+    

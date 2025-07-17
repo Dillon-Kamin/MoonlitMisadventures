@@ -9,13 +9,12 @@ class MainMenu(BaseState):
     def __init__(self, resources, screen):
         super().__init__()
         self.RESOURCES = resources
-        self.screen = screen
-        screen_width, screen_height = self.screen.get_size()
+        screen_width, screen_height = screen.get_size()
 
         font_size = int(screen_height * 0.05)
         self.menu_font = pg.font.Font(self.RESOURCES["FONTS"]["main_font_path"], font_size)
         
-        self.bg_image = pg.transform.scale(pg.image.load("assets/images/backgrounds/mainmenu_background.png"), self.screen.get_size()).convert()
+        self.bg_image = pg.transform.scale(pg.image.load("assets/images/backgrounds/mainmenu_background.png"), screen.get_size()).convert()
         
         button_width = screen_width // 4.5
         button_height = screen_height // 15
@@ -67,9 +66,9 @@ class MainMenu(BaseState):
     def update(self, dt):
         self.btn_container.update(dt)
 
-    def render(self):
-        self.screen.blit(self.bg_image, (0, 0))
-        self.btn_container.render(self.screen)
+    def render(self, screen):
+        screen.blit(self.bg_image, (0, 0))
+        self.btn_container.render(screen)
 
     def exit_game(self):
         self.persist_on_quit = False

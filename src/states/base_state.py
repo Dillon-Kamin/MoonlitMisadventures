@@ -18,5 +18,5 @@ class BaseState:
     def update(self, dt):
         pass
 
-    def render(self):
+    def render(self, screen):
         pass

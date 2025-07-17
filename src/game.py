@@ -28,7 +28,7 @@ class Game:
 
             # render all states in the state stack (may change later or have some visibility variable in state to determine)
             for state in self.state_stack:
-                state.render()
+                state.render(self.screen)
             pg.display.flip()
 
             if current_state.quit:

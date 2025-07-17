@@ -3,6 +3,7 @@
 class BaseState:
     def __init__(self):
         self.quit = False
+        self.persist_on_quit = False
         self.next_state = None
 
     def enter(self):

@@ -70,15 +70,23 @@ class MainMenu(BaseState):
         self.btn_container.render(screen)
 
     def exit_game(self):
-            self.quit = True
+        self.persist_on_quit = False
+        self.quit = True
+        print("Exiting...")
             
     def new_game(self):
-        print("Starting new game...")
+        self.persist_on_quit = False
+        self.quit = True
+        print("Starting New Game...")
 
     def load_game(self):
-        print("Loading game from save...")
+        self.persist_on_quit = True
+        self.quit = True
+        print("Loading Game...")
 
     def open_settings(self):
-        print("Opening settings...")
+        self.persist_on_quit = True
+        self.quit = True
+        print("Opening Settings...")
 
     

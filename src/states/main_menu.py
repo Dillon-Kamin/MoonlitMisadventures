@@ -3,7 +3,7 @@
 import pygame as pg
 from .base_state import BaseState
 from ..ui.button_group import ButtonGroup
-#from src.states.settings_menu import SettingsMenu
+from src.states.settings_menu import SettingsMenu
 
 class MainMenu(BaseState):
     def __init__(self, context):
@@ -22,14 +22,15 @@ class MainMenu(BaseState):
         padding = 20
         pos_y = 0
         pos_x = screen_width - button_width - 2*padding
-
         spacing = int(screen_height * 0.02)
+
         self.btn_container = ButtonGroup(
             pos=(pos_x, pos_y),
             button_size=button_size,
             spacing=spacing,
             orientation="vertical",
-            padding=padding
+            padding=padding,
+            bg_color=pg.Color(self.RESOURCES["COLORS"]["clear"])
         )
         self.btn_container.add_button(
             text="New Game",
@@ -88,6 +89,6 @@ class MainMenu(BaseState):
     def open_settings(self):
         self.persist_on_quit = True
         self.quit = True
-        #self.next_state = SettingsMenu(self.context)
+        self.next_state = SettingsMenu(self.context)
 
     

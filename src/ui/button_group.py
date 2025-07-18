@@ -7,7 +7,7 @@ from typing import List, Tuple
 
 class ButtonGroup(UIElement):
     def __init__(self, pos: Tuple[int, int], button_size: Tuple[int, int], spacing: int = 10, 
-                 orientation: str = "vertical", padding: int = 10, visible: bool = True):
+                 orientation: str = "vertical", padding: int = 10, visible: bool = True, bg_color: pg.typing.ColorLike = None):
         super().__init__(pos, visible)
         self.pos = pos
         self._cursor = list(self.pos)
@@ -18,12 +18,12 @@ class ButtonGroup(UIElement):
         self.buttons: List[Button] = []
         self.width = 0
         self.height = 0
+        self.bg_color = bg_color
     
     def add_button(self, color_fill: pg.typing.ColorLike, font: pg.font.Font, text: str = "", 
                    text_color: pg.typing.ColorLike = "white", action = None):
         num_buttons = len(self.buttons)
 
-        # USE CURSOR INSTEAD
         if self.orientation == "vertical":
             self.height += self.button_size[1]
             if num_buttons == 0:
@@ -64,6 +64,11 @@ class ButtonGroup(UIElement):
         if not self.visible:
             return
         else:
-            # draw own border box (no fill/translucent)
+            if self.bg_color:
+                rect = pg.Rect(self.pos, (self.width, self.height))
+                container_surf = pg.Surface(rect.size, pg.SRCALPHA)
+                container_surf.fill(self.bg_color)
+                surface.blit(container_surf, rect.topleft)
+                
             for btn in self.buttons:
                 btn.render(surface)

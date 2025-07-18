@@ -11,7 +11,7 @@ class UIElement:
         raise NotImplementedError
 
     def handle_event(self, event):
-        pass
+        raise NotImplementedError
 
     def update(self, dt):
-        pass
+        raise NotImplementedError

@@ -7,6 +7,9 @@ class BaseState:
         self.persist_on_quit = False
         self.next_state = None
 
+    def resize(self):
+        pass
+
     def enter(self):
         pass
 

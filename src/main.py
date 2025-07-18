@@ -1,7 +1,6 @@
 # src/main.py
 
 import pygame
-import sys
 
 from src.settings import Settings
 from src.resources import Resources

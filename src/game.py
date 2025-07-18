@@ -1,7 +1,7 @@
 # src/game.py
 
 import pygame as pg
-import os
+import os, sys
 
 from src.game_context import GameContext
 from src.states.main_menu import MainMenu
@@ -37,6 +37,7 @@ class Game:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     self.gameRunning = False
+                    sys.exit()
                 current_state.handle_event(event)
 
             current_state.update(dt)

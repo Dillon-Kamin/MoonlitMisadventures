@@ -2,6 +2,7 @@
 
 from .ui_element import UIElement
 from typing import Tuple
+
 import pygame as pg
 
 class Button(UIElement):

@@ -1,9 +1,10 @@
 # src/states/main_menu.py
 
 import pygame as pg
+
 from .base_state import BaseState
+from .settings_menu import SettingsMenu
 from ..ui.button_group import ButtonGroup
-from src.states.settings_menu import SettingsMenu
 
 class MainMenu(BaseState):
     def __init__(self, context):

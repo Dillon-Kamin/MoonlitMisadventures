@@ -1,8 +1,9 @@
 # src/ui/button_group.py
 
-from .ui_element import UIElement
 import pygame as pg
-from src.ui.button import Button
+
+from .ui_element import UIElement
+from .button import Button
 from typing import List, Tuple
 
 class ButtonGroup(UIElement):

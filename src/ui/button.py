@@ -54,3 +54,6 @@ class Button(UIElement):
     def is_hovered(self) -> bool:
         return self.hovered
     
+    def set_text(self, new_text: str):
+        self.text = new_text
+    

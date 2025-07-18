@@ -49,6 +49,7 @@ class ButtonGroup(UIElement):
         new_btn = Button(self._cursor, color_fill=color_fill, box=self.button_size, visible=self.visible, 
                             text=text, text_color=text_color, font=font, action=action)
         self.buttons.append(new_btn)
+        return new_btn
 
     def handle_event(self, event):
         for btn in self.buttons:

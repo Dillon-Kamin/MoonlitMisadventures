@@ -43,6 +43,8 @@ class Game:
 
                 if current_state.persist_on_quit == False:
                     self.state_stack.pop()
+                else:
+                    current_state.next_state = None
 
                 if next_state:
                     self.state_stack.append(next_state)

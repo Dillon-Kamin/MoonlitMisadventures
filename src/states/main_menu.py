@@ -4,6 +4,7 @@ import pygame as pg
 
 from .base_state import BaseState
 from .settings_menu import SettingsMenu
+from .GameplayDevState import GamePlayState
 from ..ui.button_group import ButtonGroup
 
 class MainMenu(BaseState):
@@ -82,7 +83,7 @@ class MainMenu(BaseState):
     def new_game(self):
         self.persist_on_quit = False
         self.quit = True
-        print("Starting New Game...")
+        self.next_state = GamePlayState(self.context)
 
     def load_game(self):
         self.persist_on_quit = True
